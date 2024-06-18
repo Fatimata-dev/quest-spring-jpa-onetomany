@@ -37,8 +37,9 @@ public class SchoolController {
     @GetMapping("/school/register")
     public String inscription(Model out,
                               @RequestParam Long idSchool) {
-
+                                System.out.println("idSchool: " + idSchool);
         Optional<School> optionalSchool = schoolRepository.findById(idSchool);
+        System.out.println("optionalSchool: " + optionalSchool);
         School school = new School();
         if (optionalSchool.isPresent()) {
             school = optionalSchool.get();
@@ -62,7 +63,7 @@ public class SchoolController {
         return "register";
     }
 
-    @PostMapping("/school/register")
+    @PostMapping("/school/register/")
     public String inscription(@RequestParam Long idSchool,
                               @RequestParam Long idWizard) {
 
